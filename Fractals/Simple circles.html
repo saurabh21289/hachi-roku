@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<!-- <body onload="draw(x,y,radius)"> -->
+<body>
+  <div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <h1>Fractals using recursion</h1>
+      <p>I'm learning recursion and implementing fractals</p>
+      <p id="demo"></p>
+      <div class="col-md-4">
+      <textarea class="form-control" maxlength="4" onfocus="this.value=''; this.onfocus='';" style="background:#ffffff; color:#000000; resize:none" rows="1" id="circle">Enter radius</textarea>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="clean(); factorial($('#circle').val());">Draw</button>
+      <!-- <button type="button" class="btn btn-primary" onclick="clean()">Clear</button> -->
+    </div>
+  </div>
+  <div class="col-md-10">
+    <hr>
+  <canvas id="myCanvas" width="900" height="500" style="border:1px solid #d3d3d3;">
+  </div>
+</div>
+
+<script>
+var n;
+//console.log(n);
+var x = 450; var y = 250; var radius;
+
+function clean(){
+  console.log("testing");
+  var c=document.getElementById("myCanvas");
+  var ctx=c.getContext("2d");
+  ctx.clearRect(0, 0, 900, 500);
+}
+
+function draw(x,y,radius){
+  console.log("test");
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, 2 * Math.PI);
+  ctx.stroke();
+}
+
+function factorial(n) {
+  //draw(x,y,n);
+  draw(x - n/2,y,n/2);
+  draw(x + n/2,y,n/2);
+  if(n>2) {
+    return n * factorial(n*0.75);
+      //ctx.closePath();
+  }
+}
+</script>
+
+</body>
+</html>
