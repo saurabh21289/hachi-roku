@@ -1,38 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bootstrap Example</title>
+  <title>Simple circles using recursion</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+
 </head>
 <!-- <body onload="draw(x,y,radius)"> -->
 <body>
   <div class="container">
-  <div class="row">
-    <div class="col-md-5">
+
+    <div class="col-md-8">
       <h1>Fractals using recursion</h1>
-      <p>I'm learning recursion and implementing fractals</p>
-      <p id="demo"></p>
-      <div class="col-md-4">
+      <p>A simple implementation of recursion to draw some aethetically pleasing circles!</p>
+      <!-- <div class="col-md-4">
       <textarea class="form-control" maxlength="4" onfocus="this.value=''; this.onfocus='';" style="background:#ffffff; color:#000000; resize:none" rows="1" id="circle">Enter radius</textarea>
-      </div>
-      <button type="button" class="btn btn-primary" onclick="clean(); factorial($('#circle').val());">Draw</button>
+      </div> -->
+      <!-- <button type="button" class="btn btn-primary" onclick="clean(); factorial($('#circle').val());">Draw</button> -->
       <!-- <button type="button" class="btn btn-primary" onclick="clean()">Clear</button> -->
     </div>
-  </div>
-  <div class="col-md-10">
-    <hr>
-  <canvas id="myCanvas" width="900" height="500" style="border:1px solid #d3d3d3;">
+    <div class="container">
+
+      <div class="col-md-8">
+      <!-- <span id="mySlider"></span> -->
+      <span id="mySlider"></span>
+      <!-- <input type="number" id="mySlider" style="margin-top:7px;" value="72"> -->
+      <div class="range-slider" data-slider data-options="display_selector: #mySlider; start: 1; end: 9999;">
+        <span class="range-slider-handle"></span>
+        <span class="range-slider-active-segment"></span>
+      </div>
+</div>
+
+
+      <div class="col-md-8">
+        <div class="row">
+          <hr>
+      <canvas id="myCanvas" width="900" height="500" style="border:1px solid #d3d3d3;">
+      </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
+$(document).ready(function() {
+    $(document).foundation();
+})
+
 var n;
-//console.log(n);
 var x = 450; var y = 250; var radius;
+
+$('[data-slider]').on('change.fndtn.slider', function(){
+         var value = $(this).attr('data-slider');
+         factorial(value);
+         console.log(value);
+
+    });
+
+// $('#mySlider').on('change', function(){
+//     var value = $(this).attr('#mySlider');
+//     console.log(value);
+//     // clean();
+//     factorial(value);
+//     // $('#donation-amount').val(value);
+// });
+
 
 function clean(){
   console.log("testing");
@@ -45,9 +82,14 @@ function draw(x,y,radius){
   console.log("test");
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
+  // ctx.fillStyle = '#FF0000';
   ctx.beginPath();
+  // ctx.fillStyle = 'black';
   ctx.arc(x, y, radius, 0, 2 * Math.PI);
+  ctx.fillStyle = '#'+(Math.random()*0xFFFF33<<0).toString(16);
+  ctx.fill();
   ctx.stroke();
+  ctx.closePath();
 }
 
 function factorial(n) {
