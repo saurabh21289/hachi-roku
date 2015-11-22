@@ -17,7 +17,8 @@
 
     <div class="col-md-8">
       <h1>Fractals using recursion</h1>
-      <p>A simple implementation of recursion to draw some aethetically pleasing circles!</p>
+      <p>A simple implementation of recursion to draw some aethetically pleasing circles! Use the slider
+      to change the radius.</p>
       <!-- <div class="col-md-4">
       <textarea class="form-control" maxlength="4" onfocus="this.value=''; this.onfocus='';" style="background:#ffffff; color:#000000; resize:none" rows="1" id="circle">Enter radius</textarea>
       </div> -->
@@ -30,7 +31,7 @@
       <!-- <span id="mySlider"></span> -->
       <span id="mySlider"></span>
       <!-- <input type="number" id="mySlider" style="margin-top:7px;" value="72"> -->
-      <div class="range-slider" data-slider data-options="display_selector: #mySlider; start: 1; end: 9999;">
+      <div class="range-slider round" data-slider data-options="display_selector: #mySlider; start: 1; end: 9999;">
         <span class="range-slider-handle"></span>
         <span class="range-slider-active-segment"></span>
       </div>
@@ -57,18 +58,11 @@ var x = 450; var y = 250; var radius;
 
 $('[data-slider]').on('change.fndtn.slider', function(){
          var value = $(this).attr('data-slider');
+         clean();
          factorial(value);
          console.log(value);
 
     });
-
-// $('#mySlider').on('change', function(){
-//     var value = $(this).attr('#mySlider');
-//     console.log(value);
-//     // clean();
-//     factorial(value);
-//     // $('#donation-amount').val(value);
-// });
 
 
 function clean(){
@@ -79,12 +73,10 @@ function clean(){
 }
 
 function draw(x,y,radius){
-  console.log("test");
+  // console.log("test");
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
-  // ctx.fillStyle = '#FF0000';
   ctx.beginPath();
-  // ctx.fillStyle = 'black';
   ctx.arc(x, y, radius, 0, 2 * Math.PI);
   ctx.fillStyle = '#'+(Math.random()*0xFFFF33<<0).toString(16);
   ctx.fill();
@@ -96,9 +88,10 @@ function factorial(n) {
   //draw(x,y,n);
   draw(x - n/2,y,n/2);
   draw(x + n/2,y,n/2);
+  draw(x,y/2,n/2);
+  draw(x,y + y/2,n/2);
   if(n>2) {
     return n * factorial(n*0.75);
-      //ctx.closePath();
   }
 }
 </script>
