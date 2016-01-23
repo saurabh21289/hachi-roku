@@ -23,7 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5E4770671C3E989200E05CE1 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Quick_sort/main.cpp; sourceTree = SOURCE_ROOT; };
+		5E4770671C3E989200E05CE1 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = main.cpp; path = Quick_sort/main.cpp; sourceTree = SOURCE_ROOT; };
 		5E5EEAA91C33F15E0099E03C /* Sorting */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Sorting; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -207,6 +207,7 @@
 		5E5EEAB11C33F15E0099E03C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -214,6 +215,7 @@
 		5E5EEAB21C33F15E0099E03C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -7,6 +7,9 @@
 //
 
 #include <iostream>
+#include <vector>
+
+using namespace std;
 
 //void display(int* , int);
 
@@ -44,9 +47,65 @@ void quick_sort(int *arr, int left, int right)
     
 }
 
+//merge sort function
+
+void printvector(vector<int> v)
+{
+    for (auto x: v){
+        cout << x << " ";
+    }
+    cout << endl;
+}
+
+void merge(vector<int> &A,int p,int q,int r){
+    
+    int n1=q-p+1;
+    int n2=r-q;
+    int i,j;
+    
+    vector<int> L(n1+1);
+    vector<int> R(n2+1);
+    for (i=0;i<n1;i++)
+        L[i]=A[p+i-1];
+    for (j=0;j<n2;j++)
+        R[i]=A[q+j];
+    
+    L[n1]=999;
+    R[n2]=999;
+    i=j=0;
+    for (int k = p; k<r ; k++){
+        if (L[i]<R[j]){
+            A[k] = L[i];
+            i++;
+        }
+        else {
+            A[k]=R[j];
+            j++;
+        }
+    }
+}
+
+void mergesort(vector<int> & A,int p,int r){
+    
+    int q;
+    if (p<r){
+        q=(p+r)/2;
+        mergesort(A,p,q);
+        mergesort(A,q+1,r);
+        merge(A,p,q,r);
+    }
+}
+
+
 int main() {
     // insert code here...
+    int x;
     std::cout << "Hello, World!\n";
+    std::cout << "Enter 1 for Quick sort; 2 for Merge sort";
+    std::cin >> x;
+//    std::cout << endl;
+    
+    if (x == 1){
     int size = 6;
     int arr[size];
     int left = size - size;
@@ -59,6 +118,28 @@ int main() {
     quick_sort(arr , left, right);
     std::cout << "Sorted array: " << std::endl << 9/2 << std::endl;
     display(arr, size);
+    }
+    
+    else if(x == 2){
+        int N=10;
+        vector<int> v(N);
+        
+        // Read in the numbers
+        cout << "sort these numbers" << endl;
+        for (int i=0 ; i < N ; i++ )
+        {
+            v[i]=10 - i;
+        }
+        
+        printvector(v);
+        
+        mergesort(v,0,N);
+        
+        cout << "the sorted numbers are" << endl;
+        printvector(v);
+        
+        return 0;
+    }
     
 //    return 0;
 }
