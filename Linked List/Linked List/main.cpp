@@ -83,6 +83,34 @@ struct node* del_node(struct node *head, int y){
     
 }
 
+struct node* del_node2(struct node *head, int x)
+{
+    struct node *temp;
+    temp = (struct node*)malloc(sizeof(struct node));
+    
+    if(head == NULL)
+        std::cout<<"List is empty!";
+    else if(head->data == x)
+    {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
+    
+    else
+    {
+        temp = head;
+        while(temp->next->data != x)
+            temp = temp->next;
+        
+        struct node *temp2 = temp->next;
+        temp->next = temp2->next;
+        free(temp2);
+    }
+    return (head);
+    
+}
+
 int main() {
     // insert code here...
     std::cout << "Hello, World!\n";
@@ -113,7 +141,7 @@ int main() {
             std::cout<<"Enter value to delete: ";
             std::cin>> y;
             std::cout<<"Head before deletion = "<<head<<std::endl;;
-            head = del_node(head, y);
+            head = del_node2(head, y);
         }
         
 //    start = (struct node*)malloc(sizeof(struct node));
