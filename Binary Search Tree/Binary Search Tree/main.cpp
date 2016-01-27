@@ -30,15 +30,27 @@ void insert(struct node **node, int x)
     
 }
 
+int size(struct node *node)
+{
+    if(node != NULL)
+    {
+        return (size(node->left) + 1 + size(node->right));
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 
 int main() {
     // insert code here...
     std::cout << "Hello, World!\n";
-    int x;
+    int x, z;
     struct node *root = NULL;
     while(x != 9)
     {
-        std::cout<<"1. Add value to BST 9. Exit : ";
+        std::cout<<"1.Add value to BST 2.Count nodes 9.Exit : ";
         std::cin>>x;
         
         if(x == 1)
@@ -47,6 +59,11 @@ int main() {
             std::cout<<"Enter value to insert: ";
             std::cin>>y;
             insert(&root, y);
+        }
+        else if(x == 2)
+        {
+            z = size(root);
+            std::cout<<"Size of BST = "<< z <<std::endl;
         }
     }
     return 0;
