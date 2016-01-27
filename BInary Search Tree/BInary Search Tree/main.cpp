@@ -16,7 +16,7 @@ struct node{
 
 void insert(struct node **node, int x)
 {
-    if(*node == NULL)
+    if(node == NULL)
     {
         (*node) = new struct node;
         (*node)->data = x;
