@@ -16,7 +16,7 @@ struct node{
 
 void insert(struct node **node, int x)
 {
-    if(node == NULL)
+    if(*node == NULL)
     {
         (*node) = new struct node;
         (*node)->data = x;
@@ -31,7 +31,6 @@ void insert(struct node **node, int x)
 }
 
 
-
 int main() {
     // insert code here...
     std::cout << "Hello, World!\n";
@@ -39,7 +38,7 @@ int main() {
     struct node *root = NULL;
     while(x != 9)
     {
-        std::cout<<"1. Add value to BST 9. Exit";
+        std::cout<<"1. Add value to BST 9. Exit : ";
         std::cin>>x;
         
         if(x == 1)
