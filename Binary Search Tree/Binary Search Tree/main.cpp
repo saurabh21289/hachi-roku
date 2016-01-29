@@ -42,6 +42,32 @@ int size(struct node *node)
     }
 }
 
+void inorder(struct node *node) //Always displys in ascending order
+{
+    if(node != NULL)
+    {
+        inorder(node->left);
+        std::cout<<node->data<<" ";
+        inorder(node->right);
+    }
+
+}
+
+int search(struct node *node, int z)
+{
+    if (node == NULL){
+        return 0;
+    }
+    else if (node->data == z)
+        return 1;
+    else if(node->data > z)
+        return search(node->left, z);
+    else
+    {
+        return search(node->right, z);
+    }
+    
+}
 
 int main() {
     // insert code here...
@@ -50,7 +76,7 @@ int main() {
     struct node *root = NULL;
     while(x != 9)
     {
-        std::cout<<"1.Add value to BST 2.Count nodes 9.Exit : ";
+        std::cout<<std::endl<<"1.Add value to BST 2.Count nodes 3.Inorder traversal 4. Search element 9.Exit : ";
         std::cin>>x;
         
         if(x == 1)
@@ -64,6 +90,20 @@ int main() {
         {
             z = size(root);
             std::cout<<"Size of BST = "<< z <<std::endl;
+        }
+        else if(x == 3)
+        {
+            inorder(root);
+        }
+        else if( x == 4)
+        {
+            std::cout<<"Enter the element to search: ";
+            std::cin>>z;
+            x = search(root, z);
+            if ( x == 1)
+                std::cout<<"Element found!"<<std::endl;
+            else
+                std::cout<<"Element not found."<<std::endl;
         }
     }
     return 0;
