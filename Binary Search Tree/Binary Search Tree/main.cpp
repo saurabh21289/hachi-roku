@@ -8,6 +8,8 @@
 
 #include <iostream>
 
+using namespace std;
+
 struct node{
     int data;
     struct node *left;
@@ -59,14 +61,30 @@ int search(struct node *node, int z)
         return 0;
     }
     else if (node->data == z)
+    {
+        std::cout<<"Element found is "<<node->data<<std::endl;
         return 1;
+    }
     else if(node->data > z)
         return search(node->left, z);
     else
-    {
         return search(node->right, z);
-    }
     
+}
+
+void delete_tree(struct node **node)
+{
+        if ( (*node) == NULL)
+            return;
+    
+        delete_tree(&(*node)->left);
+        delete_tree(&(*node)->right);
+    
+        if((*node)->left == NULL && (*node)->right==NULL)
+        {
+            free(*node);
+            *node = NULL;
+        }
 }
 
 int main() {
@@ -76,7 +94,7 @@ int main() {
     struct node *root = NULL;
     while(x != 9)
     {
-        std::cout<<std::endl<<"1.Add value to BST 2.Count nodes 3.Inorder traversal 4. Search element 9.Exit : ";
+        cout<<std::endl<<"1.Add value to BST 2.Count nodes 3.Inorder traversal 4.Search element 5.Delete tree 9.Exit : ";
         std::cin>>x;
         
         if(x == 1)
@@ -104,6 +122,10 @@ int main() {
                 std::cout<<"Element found!"<<std::endl;
             else
                 std::cout<<"Element not found."<<std::endl;
+        }
+        else if(x == 5)
+        {
+            delete_tree(&root);
         }
     }
     return 0;
