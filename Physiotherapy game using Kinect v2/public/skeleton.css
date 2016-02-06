@@ -1,0 +1,137 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Nov 11, 2015, 4:15:18 PM
+    Author     : Andrew Filippi
+*/
+#x_y_value_R {
+    position: fixed;
+    z-index: 100;
+    margin-top: -500px;
+    margin-left: 1100px;
+}
+
+#x_y_value_L {
+    z-index: 1000;
+    top: 600px;
+    margin-left: 500px;
+}
+
+#kinect_x {
+    position: fixed;
+    z-index: 100;
+    margin-top: -300px;
+    margin-left: 1100px;
+}
+
+#kinect_y {
+    z-index: 1000;
+    top: 400px;
+    margin-left: 500px;
+}
+
+#my_Canvas{
+    
+    z-index: 1;
+    background-image: url("img/background.jpg");
+}
+/*#bodyCanvas{        // remove this element while using kinect, as it causes it to malfunction
+    z-index: -1;
+    height: 0px;
+}*/
+
+
+.wlcm_btn {
+        background-color:#ffffff;
+        position: absolute;
+    	border:2px solid #3fcca4;
+	
+	-moz-border-radius:26px;
+	-webkit-border-radius:26px;
+	border-radius:26px;
+	color:#52be7f;
+	font-family:Trebuchet MS;
+	font-size: 68px;
+	font-weight:bold;
+	padding:17px 30px;
+	text-decoration:none;
+        opacity: 0.8;
+        top: 250px;
+        left: 450px;
+        width: 300px;
+        height : 75px;
+        z-index: 110;        
+}
+.mode_btn1 {
+        background-color:#ffffff;
+        position: absolute;
+    	border:2px solid #3fcca4;
+	
+	-moz-border-radius:26px;
+	-webkit-border-radius:26px;
+	border-radius:26px;
+	color:#52be7f;
+	font-family:Trebuchet MS;
+	font-size: 37px;
+	font-weight:bold;
+	padding:17px 30px;
+        padding-left: 50px;
+	text-decoration:none;
+        opacity: 0.8;
+        top: -250px;
+        left: -750px;
+        width: 130px;
+        height : 50px;
+        z-index: 110;        
+}
+.mode_btn2 {
+        background-color:#ffffff;
+        position: absolute;
+    	border:2px solid #3fcca4;
+	padding-left: 50px;
+	-moz-border-radius:26px;
+	-webkit-border-radius:26px;
+	border-radius:26px;
+	color:#52be7f;
+	font-family:Trebuchet MS;
+	font-size: 37px;
+	font-weight:bold;
+	padding:17px 30px;
+	text-decoration:none;
+        opacity: 0.8;
+        top: -250px;
+        left: -300px;
+        width: 160px;
+        height : 50px;
+        z-index: 110;        
+}
+
+
+.myButton {
+	background-color:#f56262;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #454745;
+	display:inline-block;
+	cursor:pointer;
+        top:35%;
+        left:60%;
+	color:#ffffff;
+        position: fixed;
+        z-index: 110;
+	font-family:Arial;
+	font-size:17px;
+	padding:29px 29px;
+	text-decoration:none;
+}
+.myButton:hover {
+        -webkit-transition: background-color 2s ease-in-out;
+        -moz-transition: background-color 2s ease-in-out;
+        -ms-transition: background-color 2s ease-in-out;
+        -o-transition: background-color 2s ease-in-out;
+	background-color:#fad8c8;
+}

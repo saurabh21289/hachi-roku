@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Node Kinect2 Client</title>
+	<link rel="stylesheet" href="">
+        <link rel="stylesheet" type="text/css" href="./skeleton.css"/>
+</head>
+<body>
+	<!-- <canvas id="bodyCanvas" width="800" height="600" style="border: 1px solid #000"></canvas> -->
+        <canvas id="my_Canvas" width="1300px"  height="700px" style="border: 1px solid #000"></canvas>
+	<script src="/socket.io/socket.io.js"></script>
+        <script src="./draw_browser.js"></script>
+        <script >
+           var socket = io.connect('/');
+        </script>
+
+        <div id ="x_y_value_R"></div>
+        <div id ="x_y_value_L"></div>
+				<div id="kinect_x"></div>
+				<div id="kinect_y"></div>
+        <div id="welcome_btn" class="wlcm_btn">Welcome!</div>
+        <div id="game_selector_1" class="mode_btn1">a</div>
+        <div id="game_selector_2" class="mode_btn2">b</div>
+</body>
+</html>
