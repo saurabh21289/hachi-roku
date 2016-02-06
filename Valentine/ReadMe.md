@@ -1,1 +1,1 @@
-I'm working on this interesting project as a present to my girlfrind on Valentine's Day! :)
+I'm working on this interesting project as a present to my girlfriend on Valentine's Day! :)
