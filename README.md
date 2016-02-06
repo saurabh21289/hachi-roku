@@ -1,2 +1,2 @@
 # hachi-roku
-#### A title inspired by Project Dream from Initial D Anime.
+Repository title inspired by Project Dream from Initial D Anime.
