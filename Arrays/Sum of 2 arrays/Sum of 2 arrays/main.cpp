@@ -19,12 +19,12 @@ int main() {
         cin >> a[i];
     for (int i = 0; i < 3; i++)
         cin >> b[i];
-    
+
     for (int i = 2; i >= 0; i--)
     {
         x = i - 1;
         c[i+1] = a[i] + b[i] + carry;
-        
+
         if ( c[i+1] >= 10 && x >= -1 )
         {
             c[i+1] = c[i+1] - 10;
@@ -43,6 +43,6 @@ int main() {
             c[0] = 1;
         cout << c[i] << " ";
     }
-    
-    
+
+
 }
