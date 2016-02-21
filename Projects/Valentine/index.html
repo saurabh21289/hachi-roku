@@ -4,12 +4,49 @@
 
 <head>
 
-#Nothing to see here.
+	<meta charset="utf-8" />
+
+	<title>This Valentine's Day...</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css">
+
+
+	<!-- jQuery and Modernizr-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!-- <script src="js/modernizr.custom.js"></script> -->
+
+	<!-- Countdown timer and other animations -->
+	<script src="js/jquery.countdown.js"></script>
+	<script src="js/script.js"></script>
+<!-- New stuff -->
+	<script src="lib/html5-qrcode.min.js"></script>
+	<script src="js/main.js"></script>
+
 </head>
 
 <body>
 
+	<header>
+		<h1>This Valentine's Day...</h1>
+		<h2>Some secret messages have arrived at your doorstep...Bring the QR codes in the given sequence to learn the secret!</h3>
+		<br>
+		<h2>The Secret Message is..."<span id="read" align="center"></span>"</h2>
+		<!-- <span id="read" align="center"></span> -->
+	</header>
 
+	<video autoplay loop poster="https://s-media-cache-ak0.pinimg.com/originals/3d/80/64/3d8064758e54ec662e076b6ca54aa90e.gif" id="bgvid">
+    <source src="silkie_trim3.mp4" type="video/webm">
+    <source src="silkie.mp4" type="video/mp4">
+</video>
+
+<div  class="center" id="reader" style="width:300px;height:250px;"></div>
+
+	<div id="main">
+
+		<div id="counter"></div>
+		<!-- <button id="vidpause">Pause</button> -->
+	</div>
 </body>
 
 </html>

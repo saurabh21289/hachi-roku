@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <vector>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -26,11 +27,12 @@ void quick_sort(int *arr, int left, int right)
     int j = right;
     int tmp;
     
-    int pivot = (left + right)/2;
+    //int pivot = (left + right)/2;
+    int pivot = right;
     while (i <= j){
         while (arr[i] < arr[pivot])
             i++;
-        while (arr[j] > arr[pivot])
+        while (arr[pivot] < arr[j])
             j--;
         if(i <= j){
             tmp = arr[i];
@@ -57,42 +59,49 @@ void printvector(vector<int> v)
     cout << endl;
 }
 
-void merge(vector<int> &A,int p,int q,int r){
+void merge(int a[],int beg,int mid,int end){
+
+    int l1 = mid - beg + 1;
+    int l2 = end - mid;
+    int L[l1 + 1], R[l2 + 1];
     
-    int n1=q-p+1;
-    int n2=r-q;
-    int i,j;
+    for(int i=1; i<=l1; i++)
+        L[i] = a[beg + i -1];
     
-    vector<int> L(n1+1);
-    vector<int> R(n2+1);
-    for (i=0;i<n1;i++)
-        L[i]=A[p+i-1];
-    for (j=0;j<n2;j++)
-        R[i]=A[q+j];
+    for(int j=1; j<=l2; j++)
+        R[j] = a[mid + j];
     
-    L[n1]=999;
-    R[n2]=999;
-    i=j=0;
-    for (int k = p; k<r ; k++){
-        if (L[i]<R[j]){
-            A[k] = L[i];
-            i++;
-        }
-        else {
-            A[k]=R[j];
-            j++;
-        }
+    L[l1+1] = 999;
+    R[l2+1] = 999;
+    
+    int i = 0, j = 0;
+    
+    for(int k=beg; k<=end; k++)
+    {
+            if(L[i] <= R[j])
+            {
+                a[k] = L[i];
+                i++;
+
+            }
+            else{
+                a[k] = R[j];
+                j++;
+            }
     }
+   
 }
 
-void mergesort(vector<int> & A,int p,int r){
+
+
+void mergesort(int a[],int beg,int end){
     
-    int q;
-    if (p<r){
-        q=(p+r)/2;
-        mergesort(A,p,q);
-        mergesort(A,q+1,r);
-        merge(A,p,q,r);
+    int mid;
+    if (beg<end){
+        mid=(beg+end)/2;
+        mergesort(a,beg,mid);
+        mergesort(a,mid+1,end);
+        merge(a,beg,mid,end);
     }
 }
 
@@ -101,12 +110,12 @@ int main() {
     // insert code here...
     int x;
     std::cout << "Hello, World!\n";
-    std::cout << "Enter 1 for Quick sort; 2 for Merge sort";
+    std::cout << "Enter 1 for Quick sort; 2 for Merge sort: ";
     std::cin >> x;
 //    std::cout << endl;
     
     if (x == 1){
-    int size = 6;
+    int size = 10;
     int arr[size];
     int left = size - size;
     int right = size-1;
@@ -116,27 +125,27 @@ int main() {
     
     display(arr, size);
     quick_sort(arr , left, right);
-    std::cout << "Sorted array: " << std::endl << 9/2 << std::endl;
+    std::cout << "Sorted array: " << std::endl;
     display(arr, size);
     }
     
     else if(x == 2){
         int N=10;
-        vector<int> v(N);
+        int v[N];
         
         // Read in the numbers
         cout << "sort these numbers" << endl;
         for (int i=0 ; i < N ; i++ )
         {
-            v[i]=10 - i;
+            v[i]= 45 - 5*i;
         }
         
-        printvector(v);
+        display(v, N);
         
-        mergesort(v,0,N);
+        mergesort(v,1,N);
         
         cout << "the sorted numbers are" << endl;
-        printvector(v);
+        display(v,N);
         
         return 0;
     }

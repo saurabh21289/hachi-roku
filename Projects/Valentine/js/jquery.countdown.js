@@ -83,13 +83,13 @@
 				boxName = "DAYS";
 			}
 			else if(this=="Hours") {
-				boxName = "HRS";
+				boxName = "HOURS";
 			}
 			else if(this=="Minutes") {
-				boxName = "MNTS";
+				boxName = "MINUTES";
 			}
 			else {
-				boxName = "SECS";
+				boxName = "SECONDS";
 			}
 			$('<div class="count'+this+'">' +
 				'<span class="position">' +

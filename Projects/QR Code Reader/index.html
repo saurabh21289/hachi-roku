@@ -3,43 +3,47 @@
 <html>
 
   <head>
+    <!-- A big shoutout to https://github.com/dwa012/html5-qrcode -->
     <meta charset='utf-8' />
     <meta name="description" content="HTML5 QR code Reader" />
     <script src="js/jquery-1.9.1.min.js"></script>
-    <!-- <script src="js/jsqrcode-combined.min.js"</script> -->
     <script src="lib/html5-qrcode.min.js"></script>
     <script src="js/main.js"></script>
 
-    <title>QR Code Reader</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Smart Tupper! The Tupperware of the Future!</title>
   </head>
 
   <body>
-
-    <!-- HEADER -->
-
     <!-- MAIN CONTENT -->
+    <h1>Smart Tupperware!</h1>
+
+    <div>
+    <iframe width = "100%" height= "190" frameborder ="0" scrolling="no" name="Food_items Web Form" title="Food_items Web Form" src="https://c2ect131.caspio.com/dp.asp?AppKey=b08740004e5d75b0c0794b32b584">Sorry, but your browser does not support frames.</iframe>
+    </div>
+
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner center">
 
-<div  class="center" id="reader" style="width:300px;height:250px;"></div>
+        <div  class="center" id="reader" style="width:400px;height:300px;"></div>
+        <h2 class="center">QR Code Data -> <span id="read" class="center"></span></h2>
+        <br>
+      </div>
 
-<h6 class="center">Result</h6>
-<span id="read" class="center"></span>
-<br>
 
+<div>
+<iframe width = "100%" height= "278" frameborder ="0" scrolling="no" name="Pantry Chart" title="Pantry Chart" src="https://c2ect131.caspio.com/dp.asp?AppKey=b0874000ae691cddfb7643a8bdcf">Sorry, but your browser does not support frames.</iframe>
+</div>
 <!-- <h6 class="center">Read Error (Debug only)</h6>
 <span class="center">Will constantly show a message, can be ignored</span>
 <span id="read_error" class="center"></span> -->
 
 <br>
-<h6 class="center">Video Error</h6>
+<p class="center">Errors will appear here</p>
 <span id="vid_error" class="center"></span>
 
-<br>
-<br>
-<br>
-
-</div>
 </section>
   </body>
 </html>
