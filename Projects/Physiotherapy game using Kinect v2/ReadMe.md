@@ -4,6 +4,6 @@ How to run?
 
 1. Hook up Kinect v2 for XBox One to your Windows 10 PC
 2. Clone this directory, setup Node.js and run "node index.js" in the cloned directory
-3. Go to http://localhost:8000 or http://(WAN/LANip address of the computer):8000
+3. Go to http://localhost:8000 or http://(WAN/LAN ip address of the computer):8000
 
 More elaborate description of my work here: http://blogs.bu.edu/saurabh/physical-recovery-a-fun-way/
