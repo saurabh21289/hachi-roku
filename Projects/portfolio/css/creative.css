@@ -24,6 +24,16 @@ hr.light {
     border-color: #fff;
 }
 
+a.light{
+color: rgba(255,255,255,.9);  -webkit-transition: all .35s;
+  -moz-transition: all .35s;
+  transition: all .35s;
+}
+a.light:hover,
+a.light:focus {
+    color: #ffffff;
+}
+
 a {
     color: #f05f40;
     -webkit-transition: all .35s;
@@ -459,6 +469,10 @@ fieldset[disabled] .btn-primary.active {
     text-shadow: none;
     color: #fff;
     background: #222;
+}
+
+img.inline{
+  border-radius: 75%
 }
 
 img::selection {
