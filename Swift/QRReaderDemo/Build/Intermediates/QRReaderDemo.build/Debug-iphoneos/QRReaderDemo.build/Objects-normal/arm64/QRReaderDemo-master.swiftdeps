@@ -1,0 +1,6 @@
+version: "Apple Swift version 2.1 (swiftlang-700.1.101.6 clang-700.1.76)"
+options: "46957922be59e6a79d880c998c7a718c"
+build_time: [508897617, 382954000]
+inputs:
+  "/Users/K1NG/Downloads/QRReaderDemo/QRReaderDemo/ViewController.swift": [497637015, 0]
+  "/Users/K1NG/Downloads/QRReaderDemo/QRReaderDemo/AppDelegate.swift": [470049389, 0]
