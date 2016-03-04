@@ -1,0 +1,92 @@
+Author: Jordi Mallach <jordi@debian.org>
+Description: fix texinfo build with texinfo 5.x.
+ Texinfo 5.0 is more strict about some syntax errors. This patch fixes
+ some fatal issues with @itemx usage.
+Forwarded: yes
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=713327
+
+Index: mailutils-2.99.98/doc/texinfo/programs.texi
+===================================================================
+--- mailutils-2.99.98.orig/doc/texinfo/programs.texi	2012-08-07 22:33:16.000000000 +0200
++++ mailutils-2.99.98/doc/texinfo/programs.texi	2013-07-03 02:24:48.000000000 +0200
+@@ -120,8 +120,8 @@
+ 
+ @table @option
+ @xopindex{help, described}
+-@item --help
+-@itemx -?
++@item -?
++@itemx --help
+   Display a short summary of the command line options understood by
+ this utilities, along with a terse description of each.
+ 
+@@ -183,8 +183,8 @@
+ 
+ @table @option
+ @xopindex{version, described}
+-@item --version 
+-@itemx -V
++@item -V
++@itemx --version
+ Print program version and exit.
+ 
+ @xopindex{show-config-options, described}
+@@ -2524,7 +2524,7 @@
+ @item -?
+ @itemx --help
+ Display a help message.
+-@itemx --usage
++@item --usage
+ Display a short usage summary.
+ @item -V
+ @itemx --version
+@@ -2860,8 +2860,8 @@
+ @item mail -f @var{path_to_mailbox}
+ @itemx mail --file @var{path_to_mailbox}
+ To read messages from the specified mailbox.
+-@itemx mail -u @var{user}
+-@item mail --user=@var{user}
++@item mail -u @var{user}
++@itemx mail --user=@var{user}
+ To read messages from the system mailbox belonging to @var{user}.
+ @end table
+ 
+@@ -5038,7 +5038,7 @@
+ @ref{Sieve Configuration, keep-going}.
+ 
+ @item -L @var{dir}
+-@item --libdir=@var{dir}
++@itemx --libdir=@var{dir}
+ Append directory @var{dir} to the list of directories searched for
+ library files.  See also @ref{Sieve Configuration, library-path}.
+ 
+Index: mailutils-2.99.98/doc/imprimatur/rendition.texi
+===================================================================
+--- mailutils-2.99.98.orig/doc/imprimatur/rendition.texi	2012-07-15 15:59:02.000000000 +0200
++++ mailutils-2.99.98/doc/imprimatur/rendition.texi	2013-07-03 02:28:09.251516231 +0200
+@@ -89,9 +89,9 @@
+ @c Texi2html (at least up to v. 1.78 mishandles unmacro directive, so
+ @c it is disabled for html output.
+ @c ------------------------------------------------------------------
+-@ifnothtml
+-@unmacro Empty-node-in-publish-rendition!
+-@end ifnothtml
++@c @ifnothtml
++@c @unmacro Empty-node-in-publish-rendition!
++@c @end ifnothtml
+ 
+ @macro WRITEME
+ @ifset PUBLISH
+@@ -123,9 +123,9 @@
+ @c self-explaining name ``Unrevised-node-in-publish-rendition!'' is
+ @c used.
+ @c ------------------------------------------------------------------
+-@ifnothtml
+-@unmacro Unrevised-node-in-publish-rendition!
+-@end ifnothtml
++@c @ifnothtml
++@c @unmacro Unrevised-node-in-publish-rendition!
++@c @end ifnothtml
+ 
+ @macro UNREVISED
+ @ifset PUBLISH

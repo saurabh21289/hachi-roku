@@ -1,0 +1,92 @@
+This is the GNU mailutils package.
+This document describes the actions needed to build the pre-release
+or Git version of the package. See end of file for copying conditions.
+
+* Introduction
+
+This is a *pre-release* version, and not ready for production use
+yet. If you are taking source from Git, you will need to have several
+special tools to help contribute. See the file README-hacking for more
+information, See chapter `Building' for the detailed instructions on
+how to build the package.
+
+Please, note that the accompanying documentation may be inaccurate
+or incomplete. The Git logs are the authoritative documentation of
+all recent changes.
+
+Report bugs to <bug-mailutils@gnu.org>
+
+* Checking Out the Sources
+
+The following instructions apply if you wish to obtain sources from
+the Git repository:
+
+To clone the source tree from the repository, issue the following command:
+
+  git clone git://git.savannah.gnu.org/mailutils.git
+
+This will give you read-only access.  If you think you need write access,
+contact the mailing list.
+
+* Building
+
+Usual procedures apply:
+
+ ./configure
+ make
+ make install
+
+See INSTALL and README for the detailed instructions.
+
+* Debugging
+
+To enable additional debugging information, configure the package
+with --enable-debug option.
+
+Unless you compile mailutils statically, you will need to run
+following command to debug any utility: 
+
+  libtool --mode execute gdb UTILITY-NAME
+
+Sometimes it is impossible or inconvenient to start a utility from
+the debugger. In this case, use --HANG option, which is supported by
+any of the mailutils programs. The option instructs the program to
+sleep for a given number of seconds (3600 by default) right after
+startup. For example, to debug `mimeview' utility, run
+
+  mimeview --HANG [OTHER-OPTIONS]
+
+Then switch to another terminal, get the PID of the ivoked utility and
+attach to it using gdb: 
+
+	gdb mimeview PID
+
+Once in gdb, issue the following command
+
+	set _argp_hang=0
+
+Now set your breakpoints and proceed as usual.
+
+* Copyright information:
+
+Copyright (C) 2002-2005, 2007-2008, 2010-2012 Free Software Foundation,
+Inc.
+
+   Permission is granted to anyone to make or distribute verbatim copies
+   of this document as received, in any medium, provided that the
+   copyright notice and this permission notice are preserved,
+   thus giving the recipient permission to redistribute in turn.
+
+   Permission is granted to distribute modified versions
+   of this document, or of portions of it,
+   under the above conditions, provided also that they
+   carry prominent notices stating who last changed them.
+
+
+Local Variables:
+mode: outline
+paragraph-separate: "[ 	]*$"
+version-control: never
+End:
+
+

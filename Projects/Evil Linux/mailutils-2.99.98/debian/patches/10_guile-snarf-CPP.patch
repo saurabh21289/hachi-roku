@@ -1,0 +1,16 @@
+Description: 10_guile-snarf-CPP.diff: Fix FTBFS on *ix86 caused by #759096
+ (guile-snarf hard-codes the at-build-time-default-compiler) by explicitely
+ adding CPP="@CPP@" to guile-snarf's run-time environment.
+Author: Andreas Metzler <ametzler@debian.org>
+Origin: vendor
+
+--- mailutils-2.99.98.orig/gint/gint.mk
++++ mailutils-2.99.98/gint/gint.mk
+@@ -62,6 +62,7 @@ endif
+ 
+ .c.x:
+ 	$(AM_V_GEN)AWK=$(AWK) \
++	CPP="@CPP@" \
+ 	$(GUILE_SNARF) -o $@ \
+                            $< $(snarfcppopts)
+ 

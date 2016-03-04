@@ -4,15 +4,10 @@
 );
 }
 
-header {
+h1 {
 	font-family: "Anime";
 	width: 900px;
-	margin: 80px auto 0 auto;
-}
-
-body {
-	background: url("http://www.hdwallpapersn.com/wp-content/uploads/2015/04/HD-Abstract-Wallpapers-White-8.jpg") center repeat;
-	font-family: "Anime";
+	/*margin: 80px auto 0 auto;*/
   -webkit-text-stroke: 0.7px black;
    color: white;
    text-shadow:
@@ -22,7 +17,13 @@ body {
       -1px 1px 0 #000,
        1px 1px 0 #000;
   text-align center;
-	padding-bottom: 40px;
+  padding-bottom: 40px;
+}
+
+body {
+	background: url("http://www.hdwallpapersn.com/wp-content/uploads/2015/04/HD-Abstract-Wallpapers-White-8.jpg") center repeat;
+	font-family: "Anime";
+
 }
 
 iframe{

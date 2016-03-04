@@ -1,0 +1,22 @@
+Author: Jordi Mallach <jordi@debian.org>
+Description: Workaround Guile's pkg-config not defining 'bindir'
+ Mailutils' Guile check assumes `guile-config info bindir` is defined.
+ It isn't, so for now just add '/bin' to the output of the configured
+ prefix. guile-config is deprecated in favour of pkg-config, and
+ actually uses pkg-config calls internally, so the optimal fix would be
+ to replace the whole thing with pkg-config.
+Forwarded: yes
+
+Index: mailutils-2.99.98/configure.ac
+===================================================================
+--- mailutils-2.99.98.orig/configure.ac	2013-07-03 09:52:24.050630432 +0200
++++ mailutils-2.99.98/configure.ac	2013-07-03 09:55:44.946621920 +0200
+@@ -1148,7 +1148,7 @@
+ GINT_INIT([gint],[1.8 with-guile],
+ 	  [useguile=yes
+  	   AC_DEFINE([WITH_GUILE],1,[Enable Guile support])
+-           GUILE_BINDIR=`guile-config info bindir`
++           GUILE_BINDIR="`guile-config info prefix`/bin"
+            LIBMU_SCM=../libmu_scm/libmu_scm.la
+            LIBMU_SCM_DEPS='${MU_LIB_MBOX} ${MU_LIB_IMAP} ${MU_LIB_POP} ${MU_LIB_MH} ${MU_LIB_MAILDIR} ${MU_LIB_MAILER}'
+            MU_GUILE_SIEVE_MOD_DIR='$(GUILE_SITE)/$(PACKAGE)/sieve-modules'

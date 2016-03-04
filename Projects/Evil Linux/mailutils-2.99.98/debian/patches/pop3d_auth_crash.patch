@@ -1,0 +1,41 @@
+Author: Steve M. Robbins <steve@sumost.ca>
+Description: Fix a segfault in pop3d when receiving USER and PASS.
+ crypt() returned NULL, making strcmp() segfault.
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=720060
+Forwarded: yes
+
+--- orig/mailutils-2.99.98/libmailutils/auth/system.c	2012-01-05 12:21:31.000000000 -0600
++++ mailutils-2.99.98/libmailutils/auth/system.c	2013-08-17 23:58:49.064170096 -0500
+@@ -104,9 +104,17 @@
+   if (!auth_data || !pass)
+     return EINVAL;
+   
+-  return auth_data->passwd
+-         && strcmp (auth_data->passwd, crypt (pass, auth_data->passwd)) == 0 ?
++  if (!auth_data->passwd)
++    return MU_ERR_AUTH_FAILURE;
++
++  {
++    char *crypt_pass = crypt (pass, auth_data->passwd);
++    if (!crypt_pass)
++      return MU_ERR_AUTH_FAILURE;
++
++    return strcmp (auth_data->passwd, crypt_pass) == 0 ?
+           0 : MU_ERR_AUTH_FAILURE;
++  }
+ }
+ 
+ /* Called only if generic fails */
+@@ -126,8 +134,11 @@
+       struct spwd *spw;
+       spw = getspnam (auth_data->name);
+       if (spw)
+-	return strcmp (spw->sp_pwdp, crypt (pass, spw->sp_pwdp)) == 0 ?
++	{
++	  char *crypt_pass = crypt (pass, spw->sp_pwdp);
++	  return crypt_pass && strcmp (spw->sp_pwdp, crypt_pass) == 0 ?
+ 	        0 : MU_ERR_AUTH_FAILURE;
++	}
+     }
+ #endif
+   return MU_ERR_AUTH_FAILURE;

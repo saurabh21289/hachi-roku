@@ -1,0 +1,28 @@
+Description: Update for readline API changes
+Author: Sebastian Ramacher <sramacher@debian.org>
+Bug-Debian: http://bugs.debian.org/741838
+Last-Update: 2014-04-25
+
+--- mailutils-2.99.98.orig/mail/mailline.c
++++ mailutils-2.99.98/mail/mailline.c
+@@ -93,7 +93,7 @@ ml_readline_init ()
+ 
+ #ifdef WITH_READLINE
+   rl_readline_name = "mail";
+-  rl_attempted_completion_function = (CPPFunction*)ml_command_completion;
++  rl_attempted_completion_function = (rl_completion_func_t*)ml_command_completion;
+   rl_getc_function = ml_getc;
+ #endif
+ #ifdef HAVE_SIGACTION
+
+--- mailutils-2.99.98.orig/mu/shell.c
++++ mailutils-2.99.98/mu/shell.c
+@@ -336,7 +336,7 @@ mutool_initialize_readline (const char *
+ {
+   /* Allow conditional parsing of the ~/.inputrc file. */
+   rl_readline_name = (char *) name;
+-  rl_attempted_completion_function = (CPPFunction *) shell_completion;
++  rl_attempted_completion_function = (rl_completion_func_t *) shell_completion;
+   rl_getc_function = _shell_getc;
+   read_history (get_history_file_name ());
+ }

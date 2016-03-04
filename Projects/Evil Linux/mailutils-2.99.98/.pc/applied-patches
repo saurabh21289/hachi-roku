@@ -1,0 +1,7 @@
+sieve2scm_help_output.patch
+texinfo_fixes.patch
+tokyocabinet_dependencies.patch
+guile_bindir.patch
+pop3d_auth_crash.patch
+readline.patch
+10_guile-snarf-CPP.patch

@@ -1,0 +1,11 @@
+# Unset this if running from inetd
+RUN_AS_DAEMON=1
+
+MAX_CHILDREN=25
+
+#AUTHENTICATION=generic
+
+#AUTHORISATION=virtdomain
+
+# The RFC says this should be a minimum of 18000 seconds or so.
+#TIMEOUT=30

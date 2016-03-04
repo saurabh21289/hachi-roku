@@ -1,0 +1,18 @@
+Author: Jordi Mallach <jordi@debian.org>
+Description: Modify sieve.scm's --help output to accommodate help2man.
+ Make a pair of simple cosmetic changes to sieve.scm's --help output
+ in order to make help2man work, for manpage generation.
+Origin: Debian
+Forwarded: yes
+
+--- a/scheme/sieve2scm.scmi	2012-01-05 19:22:06.000000000 +0100
++++ b/scheme/sieve2scm.scmi	2012-06-11 00:05:58.078850888 +0200
+@@ -981,7 +981,7 @@
+ (define output #f)
+ 
+ (define (sieve-usage)
+-  (display "usage: sieve2scm [OPTIONS][mailbox]\n")
++  (display "Usage: sieve2scm [OPTIONS] [mailbox]\n")
+   (display "GNU sieve2scm -- compile a Sieve program into Scheme code\n\n")
+   (display "   -f, --file FILENAME      Set input file name\n")
+   (display "   -o, --output FILENAME    Set output file name\n")

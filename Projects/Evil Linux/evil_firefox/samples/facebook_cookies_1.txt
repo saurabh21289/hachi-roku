@@ -1,0 +1,13 @@
+Host		HTTP  Path This   Expires 	Name 	Value
+		Only	   domain 
+			   only
+
+.facebook.com	TRUE	/  FALSE  1512016481	datr	ViNdViPbARuYy2fDAYbkMysJ
+.facebook.com	TRUE	/  TRUE	   0		c_user	533860063
+.facebook.com	TRUE	/  TRUE	   0		xs	144%3AQAt1_D_gTEDVNw 											%3A2%3A1448944480%3A3006
+.facebook.com	TRUE	/  FALSE   0		csm	2
+.facebook.com	TRUE	/  TRUE	   0		s	Aa52DuFoGOk14yQC.BWXSNh
+.facebook.com	TRUE	/  TRUE	   1512016481	lu	RQGdDdmRt-QNveabh54-62GA
+.facebook.com	TRUE	/  FALSE   1456720483	fr	0ViUoCQbf2xpXjEIZ.AWWDC7oVJ4WfwT6eome
+							aZg-vy0c.BWXSNh.lD.FZd.0.AWWdbK4q
+.facebook.com	TRUE	/  FALSE	0	p	-2

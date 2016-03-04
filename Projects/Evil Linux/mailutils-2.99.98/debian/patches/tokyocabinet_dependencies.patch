@@ -1,0 +1,28 @@
+Author: Jordi Mallach <jordi@debian.org>
+Description: Do not set hardcoded DEPENDENCIES for tokyo or kyoto cabinet.
+ Tokyo Cabinet and Kyoto Cabinet support force the inclusion of -lz -lbz2
+ and -lrt into DEPENDENCIES, while none of the symbols in those libraries
+ are used. Avoid hardcoding them and let both libs decide what needs to
+ be added to DBMLIBS.
+Forwarded: yes
+
+Index: mailutils-2.99.98/configure.ac
+===================================================================
+--- mailutils-2.99.98.orig/configure.ac	2013-03-21 08:05:04.000000000 +0100
++++ mailutils-2.99.98/configure.ac	2013-07-03 09:52:24.050630432 +0200
+@@ -566,7 +566,6 @@
+                        [AC_CHECK_HEADERS(tchdb.h,
+                                          AC_DEFINE(WITH_TOKYOCABINET,1,
+                                                  [Enable use of Tokyo Cabinet]))
+-		       DBMLIB_DEPENDENCY="$DBMLIB_DEPENDENCY -lz -lbz2 -lrt"
+                        DBMLIBS="$DBMLIBS -ltokyocabinet"
+                        status_dbm="$status_dbm,Tokyo Cabinet"]);;
+ 
+@@ -575,7 +574,6 @@
+                        [AC_CHECK_HEADERS(kclangc.h,
+                                          AC_DEFINE(WITH_KYOTOCABINET,1,
+                                                  [Enable use of Kyoto Cabinet]))
+-		       DBMLIB_DEPENDENCY="$DBMLIB_DEPENDENCY -lz -lbz2 -lrt"
+                        DBMLIBS="$DBMLIBS -lkyotocabinet"
+                        status_dbm="$status_dbm,Kyoto Cabinet"]);;
+   esac

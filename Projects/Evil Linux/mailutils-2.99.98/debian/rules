@@ -1,0 +1,82 @@
+#!/usr/bin/make -f
+# This file is PUBLIC DOMAIN.
+#
+# Copyright © 2001,2003, 2009, 2010 Jeff Bailey, Jordi Mallach.
+
+include /usr/share/cdbs/1/class/autotools.mk
+include /usr/share/cdbs/1/rules/autoreconf.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/utils.mk
+
+# Enable hardening flags
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+include /usr/share/dpkg/buildflags.mk
+
+# These are used for cross-compiling and for saving the configure script
+# from having to guess our platform (since we know it already)
+DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+
+ifeq ($(DEB_BUILD_GNU_TYPE),$(DEB_HOST_GNU_TYPE))
+	CONFIGURE_FLAGS += --build=$(DEB_BUILD_GNU_TYPE)
+else
+	CONFIGURE_FLAGS += --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE)
+endif
+
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+   RUNTESTFLAGS = -v -v -v --debug
+endif
+
+DEB_CONFIGURE_SCRIPT_ENV += DEFAULT_CUPS_CONFDIR=/usr/share/cups/mime
+
+DEB_CONFIGURE_EXTRA_FLAGS += \
+	--libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)
+
+DEB_CONFIGURE_USER_FLAGS += \
+	--with-lispdir=\$${prefix}/share/emacs/site-lisp \
+	--enable-virtual-domains --enable-mh --enable-python \
+	--with-gnutls --with-kyotocabinet --with-gssapi --with-gsasl \
+	--with-mysql --disable-rpath --disable-static \
+	--disable-cxx --disable-nntp \
+	--program-transform-name='s/^mu$$/mu-tool/'
+
+ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
+DEB_MAKE_CHECK_TARGET =	check RUNTESTFLAGS="$(RUNTESTFLAGS)" || true
+else
+DEB_MAKE_CHECK_TARGET =
+endif
+
+clean::
+	rm -f *.1 *.8
+	rm -f testsuite/testsuite
+
+install/mailutils::
+	# These binaries conflict with elm-me. We need to rename them, as
+	# we're using alternatives for them.
+	cd debian/tmp; \
+	for i in dotlock frm from messages mail movemail readmsg; do \
+	   mv usr/bin/$$i usr/bin/$$i.mailutils; \
+	done
+
+	# Generate manpages, but remove the s[ug]id bits from binaries
+	# so LD_LIBRARY_PATH works.
+	chmod 755 $(CURDIR)/debian/tmp/usr/bin/dotlock.mailutils
+	sh debian/mangen.sh $(CURDIR)/debian/tmp/usr
+	# Restore correct perms to the binaries that need it.
+	chmod 2755 $(CURDIR)/debian/tmp/usr/bin/dotlock.mailutils
+
+build/mailutils-doc::
+	$(DEB_MAKE_INVOKE) html
+
+binary-install/python-mailutils::
+	dh_python2 -p$(cdbs_curpkg) --no-guessing-versions
+
+DEB_FIXPERMS_EXCLUDE = dotlock.mailutils
+
+DEB_DH_INSTALL_ARGS += --list-missing
+
+DEB_INSTALL_DOCS_mailutils-doc = AUTHORS NEWS README THANKS TODO \
+	doc/texinfo/mailutils.html
+DEB_INSTALL_DOCS_mailutils-mh = mh/TODO
+
+DEB_SHLIBDEPS_INCLUDE := $(CURDIR)/debian/libmailutils4/usr/lib/$(DEB_HOST_MULTIARCH)
