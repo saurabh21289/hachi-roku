@@ -1,0 +1,18 @@
+{
+  'India' : 23424848,
+  'China' : 23424971,
+  'Nepal' : 23424911,
+  'Bangladesh' : 23424759,
+  'Thailand' : 23424960,
+  'Laos' : 23424872,
+  'Malaysia' : 23424901,
+  'Vietnam' : 23424984,
+  'Indonesia' : 23424846,
+  'Taiwan' : 23424971,
+  'North Korea' : 23424865,
+  'South Korea' : 23424868
+  'Philippines' : 23424934,
+  'Japan' : 23424856,
+  'Australia' : 23424748,
+  'New Zealand' : 23424916
+}
