@@ -1,7 +1,0 @@
-#!/bin/sh
-
-set -e
-
-update-inetd --group MAIL --add "biff \tdgram \tudp \twait \troot \t/usr/sbin/comsatd comsatd -i"
-
-#DEBHELPER#
